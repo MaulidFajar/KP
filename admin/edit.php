@@ -3,23 +3,18 @@
 
   $id = '';
   if(isset($_GET['ID'])) $id = $_GET['ID'];
-  $calon = [];
   $result = mysqli_query($conn, "SELECT * FROM penerima WHERE ID='$id'");
-  if($result) {
-    if($row = mysqli_fetch_row($result)) {
-      $calon['ID'] = $row[0];
-      $calon['NM_CLN'] = $row[1];
-      $calon['NIK_CLN'] = $row[2];
-      $calon['KK_CLN'] = $row[3];
-      $calon['ALAMAT'] = $row[4];
-      $calon['EMAIL'] = $row[5];
-      $calon['FT_KTP'] = $row[6];
-      $calon['FT_KK'] = $row[7];
-      $calon['FT_RMH'] = $row[8];
-    }
-    mysqli_free_result($result);
+  foreach ($result as $calon) {
+    $calon['ID'];
+    $calon['NM_CLN'];
+    $calon['NIK_CLN'];
+    $calon['KK_CLN'];
+    $calon['ALAMAT'];
+    $calon['EMAIL'];
+    $calon['FT_KTP'];
+    $calon['FT_KK'];
+    $calon['FT_RMH'];
   }
-  mysqli_close($conn);
 ?>
 <!doctype html>
 <html lang="en">
@@ -27,7 +22,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- tab icon -->
-      <link rel="icon" type="image/png" href="../public/img/icon/tab-icon-16x16.png" sizes="16x16">
+      <link rel="icon" type="image/png" href="../public/img/logo.png" sizes="16x16">
 
     <title>Sistem Pengajuan RTLH | Disperakim</title>
 
@@ -47,7 +42,7 @@
         <form action="val_edit.php" method="post" enctype="multipart/form-data" class="mb-5">
           <div class="group mb-3">
             <label for="id" class="input-label">ID</label>
-            <input type="text" class="form-control input-field shadow-none" name="id" value="<?php echo $calon['ID']; ?>" readonly disabled>
+            <input type="text" class="form-control input-field shadow-none" name="id" value="<?php echo $calon['ID']; ?>" readonly>
           </div>
           <div class="group mb-3">
             <label for="nama" class="input-label">Nama</label>

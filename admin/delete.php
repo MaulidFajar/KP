@@ -1,8 +1,8 @@
 <?php
   include '../src/koneksi.php';
-  $ID = '';
-  if(isset($_GET['ID'])) $ID = $_GET['ID'];
-  $query = mysqli_query($conn, "DELETE FROM penerima WHERE ID = $ID");
+  $id = '';
+  if(isset($_GET['ID'])) $id = $_GET['ID'];
+  $query = mysqli_query($conn, "DELETE FROM penerima WHERE ID = $id");
   if($query) {
       header("location: admin.php");
     } else {

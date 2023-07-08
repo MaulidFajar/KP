@@ -27,14 +27,14 @@
     $folder_rumah = "../src/uploaded_img/RUMAH/".$ft_rumah;
     move_uploaded_file($ft_rumah_tmp_name, $folder_rumah);
 
+    $id = $_POST['id'];
     $nama = $_POST['nama'];
     $nik = $_POST['nik'];
     $no_kk = $_POST['no_kk'];
     $alamat = $_POST['alamat'];
     $email = $_POST['email'];
   
-    $calon = [];
-    $query = mysqli_query($conn, "UPDATE penerima SET NM_CLN='$nama', NIK_CLN='$nik', KK_CLN='$no_kk', ALAMAT='$alamat', EMAIL='$email', FT_KTP='$folder_ktp', FT_KK='$folder_kk', FT_RMH='$folder_rumah' WHERE ID");
+    $query = mysqli_query($conn, "UPDATE penerima SET NM_CLN='$nama', NIK_CLN='$nik', KK_CLN='$no_kk', ALAMAT='$alamat', EMAIL='$email', FT_KTP='$folder_ktp', FT_KK='$folder_kk', FT_RMH='$folder_rumah' WHERE ID = '$id'");
     
     if($query) {
       header("location: admin.php");
